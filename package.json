@@ -1,0 +1,42 @@
+{
+  "name": "jev-distill",
+  "version": "0.1.0",
+  "description": "Distill Jev typed decisions into small, portable, task-specific classifiers that run without Jev.",
+  "license": "MIT",
+  "type": "module",
+  "packageManager": "pnpm@11.0.0",
+  "engines": {
+    "node": ">=22"
+  },
+  "bin": {
+    "jev-distill": "./dist/cli.js"
+  },
+  "exports": {
+    ".": "./dist/index.js",
+    "./student": "./dist/student/index.js"
+  },
+  "files": [
+    "dist",
+    "examples"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "lint": "oxlint --deny-warnings src test",
+    "format": "oxfmt src test",
+    "format:check": "oxfmt --check src test",
+    "test": "vitest run",
+    "smoke:live": "JEV_DISTILL_LIVE=1 vitest run test/live.smoke.test.ts",
+    "check": "pnpm format:check && pnpm lint && pnpm typecheck && pnpm test && pnpm build"
+  },
+  "dependencies": {
+    "@typesafe-ai/sdk": "0.6.0"
+  },
+  "devDependencies": {
+    "@types/node": "26.6.2",
+    "oxfmt": "0.70.0",
+    "oxlint": "1.85.0",
+    "typescript": "7.0.2",
+    "vitest": "5.0.1"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["typescript", "unicorn", "import", "vitest"],
+  "categories": {
+    "correctness": "error",
+    "suspicious": "error"
+  },
+  "rules": {
+    "max-lines-per-function": ["error", { "max": 70, "skipBlankLines": true, "skipComments": true }],
+    "typescript/no-explicit-any": "error",
+    "no-console": "error",
+    "unicorn/no-array-sort": "off",
+    "unicorn/no-array-reverse": "off"
+  },
+  "overrides": [
+    {
+      "files": ["test/**/*.ts"],
+      "rules": {
+        "typescript/no-explicit-any": "off",
+        "no-console": "off",
+        "max-lines-per-function": "off"
+      }
+    }
+  ]
+}

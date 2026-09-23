@@ -1,0 +1,81 @@
+{
+  "contract": "jev-distill.task",
+  "contract_version": 1,
+  "name": "agent-permission",
+  "version": "0.1.0",
+  "description": "EXPERIMENTAL. Suggest whether a coding agent's tool call should run, be confirmed by a human, or be refused. Not a security boundary.",
+  "experimental": true,
+  "state": {
+    "fields": [
+      { "name": "tool", "type": "string", "description": "Tool the agent wants to use: bash, read_file, write_file, or http.", "required": true, "max_chars": 32 },
+      { "name": "request", "type": "string", "description": "Command line, path, or URL the agent wants to use.", "required": true, "max_chars": 2000 },
+      { "name": "cwd", "type": "string", "description": "Working directory (the project workspace), if known.", "required": false, "max_chars": 256 }
+    ]
+  },
+  "decision": {
+    "instructions": "An autonomous coding agent working inside a software project wants to make the tool call in the state. Should it run without asking, ask the human first, or be refused?",
+    "choices": [
+      {
+        "label": "allow",
+        "description": "Read-only or clearly scoped, reversible work inside the project workspace.",
+        "criteria": "Read-only inspection, builds, tests, or small reversible edits confined to the project workspace; nothing leaves the machine and nothing outside the project changes."
+      },
+      {
+        "label": "ask",
+        "description": "Plausibly legitimate but consequential, irreversible, or outward-facing; needs a human to confirm.",
+        "criteria": "Plausibly part of normal development but consequential: publishes, pushes, deploys, deletes project data, installs software, or changes shared or remote state."
+      },
+      {
+        "label": "deny",
+        "description": "Destructive, credential-exposing, privilege-escalating, or exfiltrating actions.",
+        "criteria": "Destroys data outside the project, reads or sends secrets or credentials, escalates privileges, disables security, opens remote shells, or exfiltrates data."
+      }
+    ]
+  },
+  "uncertainty": {
+    "teacher_min_confidence": 0.3,
+    "on_low_teacher_confidence": "exclude",
+    "student_min_confidence": 0.5,
+    "abstain_label": "ask"
+  },
+  "teacher": {
+    "model": "jev-latest",
+    "api_key_env": "TYPESAFE_API_KEY",
+    "timeout_ms": 15000,
+    "max_retries": 2,
+    "backoff_initial_ms": 500,
+    "backoff_max_ms": 5000,
+    "concurrency": 2,
+    "pricing": {
+      "input_usd_per_mtok": 0.042,
+      "output_usd_per_mtok": 0,
+      "source": "https://docs.typesafe.ai/models",
+      "checked_on": "2026-09-23"
+    }
+  },
+  "budget": {
+    "max_requests": 100,
+    "max_input_tokens": 100000,
+    "max_usd": 0.01,
+    "max_consecutive_failures": 5
+  },
+  "dataset": {
+    "holdout_fraction": 0.3,
+    "split_seed": "agent-permission-v1",
+    "max_rows": 10000,
+    "max_line_bytes": 8192
+  },
+  "train": {
+    "features": { "dimensions": 262144, "word_ngrams": 2, "char_ngrams": [3, 4], "per_field": true },
+    "target": "soft",
+    "class_weighting": "balanced",
+    "l2_grid": [0.0001, 0.001, 0.01, 0.1],
+    "cv_folds": 5,
+    "epochs": 150,
+    "learning_rate": 0.1
+  },
+  "eval": {
+    "confidence_thresholds": [0.25, 0.5, 0.75],
+    "min_gold_rows": 30
+  }
+}

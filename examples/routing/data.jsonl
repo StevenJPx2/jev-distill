@@ -1,0 +1,102 @@
+{"id":"b01","state":{"subject":"Charged twice this month","body":"My card shows two charges of $49 for the Pro plan on March 3. Please refund one.","channel":"email"},"gold":"billing"}
+{"id":"b02","state":{"subject":"Refund request","body":"I cancelled last week but was still billed for the annual plan. I'd like my money back."},"gold":"billing"}
+{"id":"b03","state":{"subject":"Invoice missing VAT number","body":"Our invoices need our EU VAT ID printed on them for accounting. Can you reissue February's invoice?","channel":"web"},"gold":"billing"}
+{"id":"b04","state":{"subject":"Update credit card","body":"The card on file expired. Where do I update the payment method so the renewal doesn't fail?"},"gold":"billing"}
+{"id":"b05","state":{"subject":"Why did my bill go up?","body":"Last month I paid $20, this month $35. Nothing changed on our side. What happened?","channel":"chat"},"gold":"billing"}
+{"id":"b06","state":{"subject":"Payment declined","body":"Renewal payment was declined but my bank says there's no issue. Can you retry the charge?"},"gold":"billing"}
+{"id":"b07","state":{"subject":"Need a receipt","body":"Please send a PDF receipt for the payment made on the 12th, our finance team requires it.","channel":"email"},"gold":"billing"}
+{"id":"b08","state":{"subject":"Downgrade and prorate","body":"If I downgrade from Business to Pro today, do I get a prorated credit for the rest of the month?"},"gold":"billing"}
+{"id":"b09","state":{"subject":"Wrong currency","body":"I'm being billed in USD but I'm in the UK. Can you switch my billing to GBP?","channel":"web"},"gold":"billing"}
+{"id":"b10","state":{"subject":"Duplicate subscription","body":"It looks like I accidentally created two subscriptions and I'm paying for both."},"gold":"billing"}
+{"id":"b11","state":{"subject":"Tax exemption","body":"We're a registered nonprofit. How do we submit our tax-exempt certificate so sales tax is removed from our invoices?","channel":"email"},"gold":"billing"}
+{"id":"b12","state":{"subject":"Cancel auto-renew","body":"Please turn off automatic renewal for my subscription; I want to pay manually each year."},"gold":"billing"}
+{"id":"b13","state":{"subject":"Unrecognized charge","body":"My bank flagged a charge from you as unrecognized. What is the 'TS*APP' descriptor on my statement?","channel":"chat"},"gold":"billing"}
+{"id":"b14","state":{"subject":"Pay by invoice","body":"Can we pay our current subscription by bank transfer against an invoice instead of using a credit card?"},"gold":"billing"}
+{"id":"b15","state":{"subject":"Coupon not applied","body":"I entered the code SPRING20 at checkout but the discount doesn't show on my invoice.","channel":"web"},"gold":"billing"}
+{"id":"b16","state":{"subject":"Billing address change","body":"Our company moved offices. Please update the billing address on future invoices."},"gold":"billing"}
+{"id":"b17","state":{"subject":"Overcharged for seats","body":"We have 8 users but were billed for 12 seats. Please correct the invoice.","channel":"email"},"gold":"billing"}
+{"id":"b18","state":{"subject":"Trial converted unexpectedly","body":"My free trial turned into a paid plan without warning and I was charged $99."},"gold":"billing"}
+{"id":"b19","state":{"subject":"Split payment","body":"Is it possible to split our annual payment across two credit cards?","channel":"chat"},"gold":"billing"}
+{"id":"b20","state":{"subject":"Refund timeline","body":"You approved my refund five days ago but I still don't see it on my card. How long does it take?"},"gold":"billing"}
+{"id":"b21","group":"g-b1","state":{"subject":"double charge","body":"hi i think you charged me 2 times for the same month??","channel":"chat"},"gold":"billing"}
+{"id":"b22","group":"g-b1","state":{"subject":"Charged two times","body":"Looks like I got billed twice for the same month, can someone check?"},"gold":"billing"}
+{"id":"b23","state":{"subject":"Monthly to annual","body":"How do I switch my subscription from monthly billing to annual billing to get the discount?","channel":"web"},"gold":"billing"}
+{"id":"b24","state":{"subject":"Failed payment email","body":"I got an email saying my payment failed, but the charge appears on my card. Am I paid up?"},"gold":"billing"}
+{"id":"b25","state":{"subject":"Purchase order for renewal","body":"Our procurement team needs a PO number on the renewal invoice for our existing subscription. How do we add it?","channel":"email"},"gold":"billing"}
+{"id":"t01","state":{"subject":"App crashes on launch","body":"Since the 4.2 update the iOS app crashes immediately when I open it.","channel":"chat"},"gold":"technical"}
+{"id":"t02","state":{"subject":"API returns 500","body":"POST /v1/orders has been returning 500 Internal Server Error for the last hour."},"gold":"technical"}
+{"id":"t03","state":{"subject":"Webhook not firing","body":"Our webhook endpoint stopped receiving events yesterday even though deliveries show as sent.","channel":"email"},"gold":"technical"}
+{"id":"t04","state":{"subject":"Sync is stuck","body":"The desktop client says 'Syncing...' forever and none of my files update."},"gold":"technical"}
+{"id":"t05","state":{"subject":"Export to CSV broken","body":"Clicking Export gives a blank file with only headers.","channel":"web"},"gold":"technical"}
+{"id":"t06","state":{"subject":"Slow dashboard","body":"The dashboard takes over 30 seconds to load for our team since this morning."},"gold":"technical"}
+{"id":"t07","state":{"subject":"SSO error","body":"SAML login fails with 'Invalid audience' after we rotated our IdP certificate.","channel":"email"},"gold":"technical"}
+{"id":"t08","state":{"subject":"Rate limit too aggressive","body":"We're hitting 429 errors at only 5 requests per second. Is something wrong with our key?"},"gold":"technical"}
+{"id":"t09","state":{"subject":"Slack integration keeps disconnecting","body":"The Slack integration disconnects every few hours and we have to re-authorize it.","channel":"chat"},"gold":"technical"}
+{"id":"t10","state":{"subject":"Data missing after import","body":"I imported 2,000 contacts from a spreadsheet but only 1,400 show up."},"gold":"technical"}
+{"id":"t11","state":{"subject":"Timezone bug","body":"Scheduled reports are sent an hour early since daylight saving time started.","channel":"web"},"gold":"technical"}
+{"id":"t12","state":{"subject":"Android notifications","body":"Push notifications stopped working on Android 15 devices."},"gold":"technical"}
+{"id":"t13","state":{"subject":"CORS error","body":"Our frontend gets a CORS error calling your API from https://app.example.com.","channel":"email"},"gold":"technical"}
+{"id":"t14","state":{"subject":"Broken link in docs","body":"The SDK installation link on the quickstart page returns a 404."},"gold":"technical"}
+{"id":"t15","state":{"subject":"Search not returning results","body":"Searching for an exact order number returns nothing even though the order exists.","channel":"chat"},"gold":"technical"}
+{"id":"t16","state":{"subject":"Upload fails","body":"Uploading a 50MB PDF fails at 99% with a network error every time."},"gold":"technical"}
+{"id":"t17","state":{"subject":"2FA codes rejected","body":"My authenticator codes are always rejected as invalid, even right after generating them. The clock on my phone is correct.","channel":"web"},"gold":"technical"}
+{"id":"t18","state":{"subject":"Memory leak in SDK","body":"The Node SDK's memory usage grows steadily until the process is killed after a day."},"gold":"technical"}
+{"id":"t19","state":{"subject":"Charts not rendering","body":"Charts on the analytics page show an empty grey box in Firefox.","channel":"email"},"gold":"technical"}
+{"id":"t20","state":{"subject":"Duplicate records created","body":"Every time the sync runs it creates duplicate copies of the same tasks."},"gold":"technical"}
+{"id":"t21","group":"g-t1","state":{"subject":"API down?","body":"Getting 502 bad gateway from the API right now, is there an outage?","channel":"chat"},"gold":"technical"}
+{"id":"t22","group":"g-t1","state":{"subject":"Outage?","body":"Your API is throwing 502 errors for all our requests. Is there an incident?"},"gold":"technical"}
+{"id":"t23","state":{"subject":"Dark mode glitch","body":"In dark mode, text in the editor is black on a dark background and unreadable.","channel":"web"},"gold":"technical"}
+{"id":"t24","state":{"subject":"Zapier trigger","body":"The 'New Invoice' Zapier trigger doesn't fire for invoices created via the API."},"gold":"technical"}
+{"id":"t25","state":{"subject":"Offline mode","body":"The app loses all unsaved changes when my connection drops briefly.","channel":"chat"},"gold":"technical"}
+{"id":"a01","state":{"subject":"Change my email","body":"I need to change the email address on my account to my new work email.","channel":"email"},"gold":"account"}
+{"id":"a02","state":{"subject":"Delete my account","body":"Please permanently delete my account and all associated data."},"gold":"account"}
+{"id":"a03","state":{"subject":"Locked out","body":"My account got locked after too many login attempts. How do I unlock it?","channel":"chat"},"gold":"account"}
+{"id":"a04","state":{"subject":"Add a team member","body":"How do I invite a colleague to our workspace as an admin?"},"gold":"account"}
+{"id":"a05","state":{"subject":"Transfer ownership","body":"The workspace owner left the company. How do we transfer ownership to me?","channel":"web"},"gold":"account"}
+{"id":"a06","state":{"subject":"Rename workspace","body":"Can I change the name of our workspace from 'Test' to our company name?"},"gold":"account"}
+{"id":"a07","state":{"subject":"Remove a user","body":"An employee left; please remove their access to our organization.","channel":"email"},"gold":"account"}
+{"id":"a08","state":{"subject":"GDPR data request","body":"Under GDPR I'd like a copy of all personal data you hold about me."},"gold":"account"}
+{"id":"a09","state":{"subject":"Merge two accounts","body":"I accidentally signed up twice with different emails. Can you merge the accounts?","channel":"chat"},"gold":"account"}
+{"id":"a10","state":{"subject":"Change username","body":"Is it possible to change my username? I made a typo when signing up."},"gold":"account"}
+{"id":"a11","state":{"subject":"Password reset email never arrives","body":"I requested a password reset three times and never received the email.","channel":"web"},"gold":"account"}
+{"id":"a12","state":{"subject":"Enable 2FA for everyone","body":"As an admin, how do I require two-factor authentication for all members?"},"gold":"account"}
+{"id":"a13","state":{"subject":"Suspicious login","body":"I got an alert about a login from another country that wasn't me.","channel":"email"},"gold":"account"}
+{"id":"a14","state":{"subject":"Update profile name","body":"My legal name changed; how do I update the name shown on my profile?"},"gold":"account"}
+{"id":"a15","state":{"subject":"Deactivate temporarily","body":"I'm going on leave for three months. Can I pause my account instead of deleting it?","channel":"chat"},"gold":"account"}
+{"id":"a16","state":{"subject":"Role permissions","body":"What's the difference between the Editor and Member roles?"},"gold":"account"}
+{"id":"a17","state":{"subject":"Lost access to 2FA device","body":"I lost my phone with the authenticator app and can't log in anymore.","channel":"web"},"gold":"account"}
+{"id":"a18","state":{"subject":"Change account region","body":"Can our workspace data be moved to the EU region?"},"gold":"account"}
+{"id":"a19","state":{"subject":"Recover deleted account","body":"I deleted my account by mistake yesterday. Can it be restored?","channel":"email"},"gold":"account"}
+{"id":"a20","state":{"subject":"Email notification settings","body":"How do I stop getting the daily digest emails?"},"gold":"account"}
+{"id":"a21","group":"g-a1","state":{"subject":"close my account","body":"I want to close my account for good, please remove everything.","channel":"chat"},"gold":"account"}
+{"id":"a22","group":"g-a1","state":{"subject":"Account deletion","body":"Please delete my profile and all my data permanently."},"gold":"account"}
+{"id":"a23","state":{"subject":"Verify domain","body":"How do we verify our company domain so new employees join our workspace automatically?","channel":"web"},"gold":"account"}
+{"id":"a24","state":{"subject":"Guest access","body":"Can I give an external contractor limited guest access to one project?"},"gold":"account"}
+{"id":"a25","state":{"subject":"Username taken","body":"The username I want says it's taken, but it's my old account that I can't access anymore.","channel":"email"},"gold":"account"}
+{"id":"s01","state":{"subject":"Enterprise pricing","body":"We're a 500-person company. What does Enterprise pricing look like?","channel":"web"},"gold":"sales"}
+{"id":"s02","state":{"subject":"Demo request","body":"Could we schedule a product demo for our leadership team next week?"},"gold":"sales"}
+{"id":"s03","state":{"subject":"Volume discount","body":"Do you offer discounts if we buy 200 seats upfront?","channel":"email"},"gold":"sales"}
+{"id":"s04","state":{"subject":"Compare plans","body":"What features does Business include that Pro doesn't? We're deciding which to buy."},"gold":"sales"}
+{"id":"s05","state":{"subject":"Nonprofit discount","body":"Do you have special pricing for nonprofits or schools?","channel":"chat"},"gold":"sales"}
+{"id":"s06","state":{"subject":"Security questionnaire","body":"Before purchasing, our security team needs you to fill out a vendor questionnaire and share your SOC 2 report."},"gold":"sales"}
+{"id":"s07","state":{"subject":"Reseller partnership","body":"We're an agency interested in reselling your product to our clients.","channel":"email"},"gold":"sales"}
+{"id":"s08","state":{"subject":"Custom contract","body":"Our legal team requires custom terms in the contract. Who can we negotiate with?"},"gold":"sales"}
+{"id":"s09","state":{"subject":"Upgrade to Business","body":"We want to upgrade our team to the Business plan. Can someone walk us through it?","channel":"web"},"gold":"sales"}
+{"id":"s10","state":{"subject":"Trial extension","body":"We need two more weeks to evaluate before buying. Can you extend our trial?"},"gold":"sales"}
+{"id":"s11","state":{"subject":"On-premise option","body":"Is there an on-premise or self-hosted version available for purchase?","channel":"chat"},"gold":"sales"}
+{"id":"s12","state":{"subject":"Pricing for startups","body":"Is there a startup program with discounted pricing for our first year?"},"gold":"sales"}
+{"id":"s13","state":{"subject":"Talk to sales","body":"I'd like to speak with someone on your sales team about a multi-year deal.","channel":"email"},"gold":"sales"}
+{"id":"s14","state":{"subject":"Education licensing","body":"We're a university looking for campus-wide licensing. What are the options?"},"gold":"sales"}
+{"id":"s15","state":{"subject":"Add-on pricing","body":"How much does the advanced analytics add-on cost per user?","channel":"web"},"gold":"sales"}
+{"id":"s16","state":{"subject":"Migrating from a competitor","body":"We're moving from a competitor with 300 users. Do you help with migration as part of a deal?"},"gold":"sales"}
+{"id":"s17","state":{"subject":"Quote request","body":"Please send a formal quote for 50 Business seats billed annually.","channel":"chat"},"gold":"sales"}
+{"id":"s18","state":{"subject":"Pilot program","body":"Can we run a paid pilot with one department before a company-wide rollout?"},"gold":"sales"}
+{"id":"s19","state":{"subject":"API access on Pro?","body":"Does the Pro plan include API access? We need that before we sign up.","channel":"email"},"gold":"sales"}
+{"id":"s20","state":{"subject":"Government pricing","body":"Do you offer a GSA schedule or government pricing?"},"gold":"sales"}
+{"id":"s21","group":"g-s1","state":{"subject":"pricing for big team","body":"how much would it cost for around 1000 users","channel":"chat"},"gold":"sales"}
+{"id":"s22","group":"g-s1","state":{"subject":"Large team quote","body":"What would pricing be for roughly a thousand seats?"},"gold":"sales"}
+{"id":"s23","state":{"subject":"Referral program","body":"Do you have a referral or affiliate program for partners who bring customers?","channel":"web"},"gold":"sales"}
+{"id":"s24","state":{"subject":"Multi-year discount","body":"What discount do we get for committing to a three-year contract?"},"gold":"sales"}
+{"id":"s25","state":{"subject":"Vendor onboarding","body":"We'd like to buy but need to go through our vendor onboarding first. Who is our account executive?","channel":"email"},"gold":"sales"}
+{"id":"dup-b01","state":{"subject":"CHARGED TWICE THIS MONTH","body":"My card shows two charges of $49 for the Pro plan  on March 3.   Please refund one.","channel":"Email"},"gold":"billing"}
+{"id":"dup-t02","group":"g-t1","state":{"subject":"API returns 500","body":"POST /v1/orders has been returning 500 Internal Server Error for the last hour."},"gold":"technical"}

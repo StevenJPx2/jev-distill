@@ -1,0 +1,86 @@
+{
+  "contract": "jev-distill.task",
+  "contract_version": 1,
+  "name": "support-routing",
+  "version": "0.1.0",
+  "description": "Route an inbound customer support ticket to the team that should own it.",
+  "experimental": false,
+  "state": {
+    "fields": [
+      { "name": "subject", "type": "string", "description": "Ticket subject line as written by the customer.", "required": true, "max_chars": 200 },
+      { "name": "body", "type": "string", "description": "Ticket body text.", "required": true, "max_chars": 4000 },
+      { "name": "channel", "type": "string", "description": "Where the ticket arrived: email, chat, or web.", "required": false, "max_chars": 16 }
+    ]
+  },
+  "decision": {
+    "instructions": "Which team should own this support ticket? Judge by what the customer needs done, not by incidental words.",
+    "choices": [
+      {
+        "label": "billing",
+        "description": "Charges, refunds, invoices, receipts, payment methods, taxes, and plan changes for an existing paid subscription.",
+        "criteria": "Money already owed or paid on an existing subscription: charges, refunds, invoices, receipts, payment methods, tax, currency, or proration."
+      },
+      {
+        "label": "technical",
+        "description": "Bugs, errors, outages, performance, integrations, and API behavior.",
+        "criteria": "Something in the product or API is broken, slow, erroring, or behaving unexpectedly, including integrations and SDKs."
+      },
+      {
+        "label": "account",
+        "description": "Login, access, users, roles, workspace settings, profile changes, and personal-data requests.",
+        "criteria": "Identity and access: logins, passwords, 2FA, users, roles, ownership, workspace or profile settings, deletion, or data-privacy requests."
+      },
+      {
+        "label": "sales",
+        "description": "Pricing questions, quotes, demos, trials, upgrades, discounts, contracts, and partnerships before or while buying.",
+        "criteria": "A purchasing conversation: pricing, quotes, demos, trial extensions, upgrades, discounts, contracts, procurement, or partnerships."
+      }
+    ]
+  },
+  "uncertainty": {
+    "teacher_min_confidence": 0.3,
+    "on_low_teacher_confidence": "exclude",
+    "student_min_confidence": 0.25,
+    "abstain_label": null
+  },
+  "teacher": {
+    "model": "jev-1.13.0",
+    "api_key_env": "TYPESAFE_API_KEY",
+    "timeout_ms": 15000,
+    "max_retries": 2,
+    "backoff_initial_ms": 500,
+    "backoff_max_ms": 5000,
+    "concurrency": 2,
+    "pricing": {
+      "input_usd_per_mtok": 0.042,
+      "output_usd_per_mtok": 0,
+      "source": "https://docs.typesafe.ai/models",
+      "checked_on": "2026-09-23"
+    }
+  },
+  "budget": {
+    "max_requests": 150,
+    "max_input_tokens": 150000,
+    "max_usd": 0.01,
+    "max_consecutive_failures": 5
+  },
+  "dataset": {
+    "holdout_fraction": 0.3,
+    "split_seed": "support-routing-v1",
+    "max_rows": 10000,
+    "max_line_bytes": 16384
+  },
+  "train": {
+    "features": { "dimensions": 262144, "word_ngrams": 2, "char_ngrams": [3, 4], "per_field": true },
+    "target": "soft",
+    "class_weighting": "balanced",
+    "l2_grid": [0.0001, 0.001, 0.01, 0.1],
+    "cv_folds": 5,
+    "epochs": 150,
+    "learning_rate": 0.1
+  },
+  "eval": {
+    "confidence_thresholds": [0.25, 0.5, 0.75],
+    "min_gold_rows": 30
+  }
+}
