@@ -10,6 +10,8 @@ export interface FakeJevOptions {
   readonly classify: (text: string, labels: readonly string[]) => Record<string, number>;
   /** Content-specific 403 (the observed behavior this tool must survive). */
   readonly forbid?: (text: string) => boolean;
+  /** Mimic the observed live shape: a Cloudflare HTML block page instead of a JSON error. */
+  readonly forbidAsEdgeHtml?: boolean;
   /** Transient failures before success, keyed by text match. */
   readonly flaky?: (text: string, attempt: number) => number | null;
   /** Force a malformed answer. */
@@ -51,6 +53,12 @@ export function fakeJev(options: FakeJevOptions): FakeJev {
 
     const transient = options.flaky?.(text, attempt) ?? null;
     if (transient !== null) return json(transient, { error: { message: "try again" } }, { "retry-after-ms": "1" });
+    if (options.forbid?.(text) && options.forbidAsEdgeHtml) {
+      return new Response("<!DOCTYPE html><html><title>Attention Required!</title></html>", {
+        status: 403,
+        headers: { "content-type": "text/html; charset=UTF-8", server: "cloudflare", "cf-ray": "8f00test-BOM" },
+      });
+    }
     if (options.forbid?.(text)) return json(403, { detail: "Request blocked by content policy." });
 
     const question = (body.questions as Record<string, { criteria: Record<string, unknown> }>).decision;

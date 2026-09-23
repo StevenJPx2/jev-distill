@@ -160,8 +160,13 @@ function decodeAnswer(data: unknown, labels: readonly string[], requestId: strin
 
 function classifyError(error: unknown): TeacherOutcome {
   if (error instanceof APIError) {
-    const requestId = error.requestId ?? null;
-    const message = redact(error.message);
+    // Edge rejections (observed: Cloudflare HTML 403s for some request content) carry cf-ray, not a TypeSafe request ID.
+    const ray = error.headers.get("cf-ray");
+    const requestId = error.requestId ?? (ray === null ? null : `cf-ray:${ray}`);
+    const html = typeof error.body === "string" && /^\s*<(!doctype|html)/i.test(error.body);
+    const message = html
+      ? `${error.status} HTML page from ${error.headers.get("server") ?? "edge"} (request blocked before reaching Jev)`
+      : redact(error.message);
 
     if (error.status === 401) return { kind: "fatal", status: 401, message };
     if (error.status === 403) return { kind: "forbidden", requestId, message };

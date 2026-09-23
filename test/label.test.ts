@@ -86,6 +86,14 @@ describe("bounded Jev labeling", () => {
     expect(summary.labeled).toBe(100 - forbidden.length);
   });
 
+  it("records edge HTML 403s (as observed live) with the cf-ray ID instead of page markup", async () => {
+    const { records } = await setup().label({ forbid: (text) => text.includes("GDPR"), forbidAsEdgeHtml: true });
+    const blocked = records.find((r) => r.id === "a08");
+
+    expect(blocked).toMatchObject({ status: "forbidden", choice: null, request_id: "cf-ray:8f00test-BOM", attempts: 1 });
+    expect(blocked?.error?.message).toBe("403 HTML page from cloudflare (request blocked before reaching Jev)");
+  });
+
   it("retries transient failures within the bounded retry policy and records attempts", async () => {
     const { label } = setup((t) => {
       t.teacher.max_retries = 2;
