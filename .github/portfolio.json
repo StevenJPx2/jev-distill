@@ -1,0 +1,11 @@
+{
+  "body": [
+    "You describe one decision in a strict **JSON task contract**, and `jev-distill` asks Jev for labels within a budget you approve. By default it only prints a plan; nothing is spent without `--approve`.",
+    "It **trains a small student classifier**, saved as a single JSON file, that predicts with no Jev, network, API key or Python.",
+    "It **reports honestly**: agreement with Jev is kept apart from accuracy against held-out human gold labels. A student can also be **served over local HTTP**."
+  ],
+  "areas": [
+    "ai-agents",
+    "developer-tools"
+  ]
+}
